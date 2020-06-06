@@ -1,0 +1,1 @@
+powershell.exe -noexit -file "Send_Custom_Email.ps1"
