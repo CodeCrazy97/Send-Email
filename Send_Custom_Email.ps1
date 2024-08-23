@@ -2,11 +2,15 @@ $Username = Read-Host 'Enter the from email address: '
 $Password = Read-Host 'Enter the password: '
 $HostCust = Read-Host 'Enter the email host: ';
 $PortCust = Read-Host 'Enter the email port: ';
-$Path = Read-Host 'Enter the attachment path: ';
+$Path = Read-Host 'Enter the attachment path (use this format: "C:\Users\username\Desktop\test.txt"): ';
 $Recipient = Read-Host 'Enter the recipient email address: ';
 
 
 function Send-ToEmail([string]$email, [string]$attachmentpath){
+
+    # Remove quotes
+    $attachmentpath = $attachmentpath -replace '"', ''
+    $attachmentpath = $attachmentpath -replace "'", ''
 
     try {
         $message = New-Object Net.Mail.MailMessage
